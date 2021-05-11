@@ -1,0 +1,92 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+class GaloisField
+{
+private:
+	int n;
+public:
+	GaloisField()
+	{
+		cout << "Object is created!\n\n";
+	}
+	int getN()
+	{
+		int userN;
+		cout << "Enter Field Dimension: ";
+		cin >> userN;
+		n = userN;
+		return n;
+	}
+	vector<vector<int>> setMult(int);
+	void printMult(int, vector<vector<int>>);
+	vector<vector<int>> setAdd(int);
+	void printAdd(int, vector<vector<int>>);
+
+	~GaloisField()
+	{
+		cout << "\nObject is destroyed!\n";
+	}
+};
+
+int main()
+{
+	GaloisField g1;
+	int n = g1.getN();
+	g1.printMult(n, g1.setMult(n));
+	g1.printAdd(n, g1.setAdd(n));
+	return 0;
+}
+
+vector<vector<int>> GaloisField :: setMult(int n)
+{
+	vector<vector<int>> vect(n, vector<int>(n));
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			vect[i][j] = (i * j) % n;
+		}
+	}
+	return vect;
+}
+
+void GaloisField :: printMult(int n, vector<vector<int>> vect)
+{
+	cout << "\nMultiplication Table: \n";
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			cout << vect[i][j] << "  ";
+		}
+		cout << endl;
+	}
+}
+
+vector<vector<int>> GaloisField :: setAdd(int n)
+{
+	vector<vector<int>> vect(n, vector<int>(n));
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			vect[i][j] = (i + j) % n;
+		}
+	}
+	return vect;
+}
+
+void GaloisField::printAdd(int n, vector<vector<int>> vect)
+{
+	cout << "\nAddition Table: \n";
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			cout << vect[i][j] << "  ";
+		}
+		cout << endl;
+	}
+}
