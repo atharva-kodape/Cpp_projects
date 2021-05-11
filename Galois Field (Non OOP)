@@ -1,0 +1,71 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+vector<vector<int>> setMultTable(int n);
+void printMultTable(int n, vector<vector<int>> vect);
+
+vector<vector<int>> setAddTable(int n);
+void printAddTable(int n, vector<vector<int>> vect);
+
+int main()
+{
+	int n;
+	cout << "\nEnter Field Dimension: ";
+	cin >> n;
+	printMultTable(n, setMultTable(n));
+	printAddTable(n, setAddTable(n));
+	return 0;
+}
+
+vector<vector<int>> setMultTable(int n)
+{
+	vector<vector<int>> vect(n, vector<int>(n));
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			vect[i][j] = (i * j) % n;
+		}
+	}
+	return vect;
+}
+
+void printMultTable(int n, vector<vector<int>> vect)
+{
+	cout << "\nMultiplication Table is: \n";
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			cout << vect[i][j] << "  ";
+		}
+		cout << endl;
+	}
+}
+
+void printAddTable(int n, vector<vector<int>> vect)
+{
+	cout << "\nAddition Table is: \n";
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			cout << vect[i][j] << "  ";
+		}
+		cout << endl;
+	}
+}
+
+vector<vector<int>> setAddTable(int n)
+{
+	vector<vector<int>> vect(n, vector<int>(n));
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			vect[i][j] = (i + j) % n;
+		}
+	}
+	return vect;
+}
